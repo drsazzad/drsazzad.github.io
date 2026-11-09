@@ -1,0 +1,123 @@
+{
+  "draft": false,
+  "name": "Dr. Sazzad Hussan",
+  "shortName": "Dr. Sazzad Hussan",
+  "initials": "SH",
+  "credentials": "MBBS (DU), CCD (BIRDEM)",
+  "role": "Primary Care Physician",
+  "focusSummary": "Diabetes & primary care",
+  "location": "Gazipur, Bangladesh",
+  "intro": "More than a decade in active practice, caring for thousands of patients—with a focus on diabetes and everyday medical care in Gazipur.",
+  "biography": [
+    "Dr. Sazzad Hussan’s experience has been built in the consultation room: more than 10 years of active practice and care for thousands of patients. His clinical work focuses on diabetes management and general medical care in Gazipur.",
+    "As a Medical Officer at Diabetic Somity Gazipur, he brings extensive outpatient experience to everyday clinical practice. Alongside his clinical work, he participates in medical seminars, professional meetings and international conferences."
+  ],
+  "focus": [
+    {
+      "title": "Diabetes care",
+      "text": "A clinical focus on the care of people living with diabetes."
+    },
+    {
+      "title": "General medical practice",
+      "text": "Experience in everyday outpatient medical care."
+    },
+    {
+      "title": "Continuing education",
+      "text": "Engagement with medical conferences, seminars and professional learning."
+    }
+  ],
+  "experience": [
+    {
+      "period": "Current appointment",
+      "title": "Medical Officer",
+      "organization": "Diabetic Somity Gazipur",
+      "location": "Gazipur, Bangladesh",
+      "description": "Outpatient clinical practice with a focus on diabetes care and general medical consultations in Gazipur.",
+      "note": "Appointment dates and detailed responsibilities to be confirmed."
+    }
+  ],
+  "education": [
+    {
+      "title": "MBBS",
+      "institution": "DU",
+      "description": "Medical qualification underpinning more than a decade of hands-on patient care.",
+      "year": "",
+      "note": "Medical college and graduation year to be added.",
+      "heading": "Medicine & clinical practice"
+    },
+    {
+      "title": "CCD",
+      "institution": "BIRDEM",
+      "description": "Focused clinical training in diabetes care, brought into everyday medical practice.",
+      "year": "",
+      "note": "Full award wording and completion year to be checked against the certificate.",
+      "heading": "Diabetes care & management"
+    }
+  ],
+  "registration": {
+    "number": "A79936",
+    "label": "Registration number",
+    "note": "Transcribed from the supplied professional card; registry verification pending."
+  },
+  "development": [
+    {
+      "category": "International engagement",
+      "title": "Medical conference participation",
+      "location": "Dubai, United Arab Emirates",
+      "description": "Participation in international medical conferences, including a meeting in Dubai.",
+      "note": "Event name, date and participation role to be confirmed."
+    },
+    {
+      "category": "Continuing education",
+      "title": "Medical seminars & professional meetings",
+      "location": "Professional development",
+      "description": "Ongoing engagement with professional seminars and medical meetings.",
+      "note": "Selected events and supporting records to be added."
+    }
+  ],
+  "contact": {
+    "email": "sazzed.murad3254@gmail.com",
+    "phones": [
+      {
+        "display": "+880 1910-217939",
+        "href": "+8801910217939"
+      },
+      {
+        "display": "+880 1684-211419",
+        "href": "+8801684211419"
+      }
+    ],
+    "address": [
+      "Diabetic Hospital Gazipur",
+      "Marcus Road, Gazipur-1700",
+      "Joydebpur, Gazipur, Bangladesh"
+    ],
+    "linkedin": ""
+  },
+  "portrait": {
+    "src": "assets/clinical-practice.jpg",
+    "alt": "Dr. Sazzad Hussan at his consultation desk, wearing a navy shirt",
+    "width": 1280,
+    "height": 1276
+  },
+  "cv": {
+    "path": "",
+    "label": "Download curriculum vitae"
+  },
+  "siteUrl": "https://drsazzad.github.io/",
+  "specialty": "Diabetes Care & General Medicine",
+  "experienceYears": "10+",
+  "clinicalImage": {
+    "src": "assets/clinical-practice-burgundy.jpg",
+    "alt": "Dr. Sazzad Hussan in his clinical practice, wearing a burgundy shirt",
+    "width": 1938,
+    "height": 2048
+  },
+  "showEditorialNotes": false,
+  "credentialsImage": {
+    "src": "assets/clinical-diabetes-care.jpg",
+    "alt": "Dr. Sazzad Hussan seated at a desk with clinical equipment",
+    "width": 1608,
+    "height": 2048
+  }
+}

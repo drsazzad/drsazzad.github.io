@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.DS_Store
+work/
+.env
+.env.*
+!.env.example
+# Original source material stays local; only approved public assets go in public/.
+starter_draft.md
+murad.jpeg
+/image*.jpg
+private/
+
+# Local editorial plans and source review notes are not public repository content.
+/docs/

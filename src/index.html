@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="{{LANGUAGE}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123d3a">
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="robots" content="{{ROBOTS}}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{PAGE_TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  {{CANONICAL}}
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script src="./assets/main.js" defer></script>
+</head>
+<body class="page-{{PAGE_ID}}">
+  <a class="skip-link" href="#main">{{UI_SKIP}}</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{OVERVIEW_URL}}" aria-label="{{SHORT_NAME}} — {{UI_OVERVIEW}}">
+        <span class="brand-mark" aria-hidden="true">{{INITIALS}}<span>.</span></span>
+        <span class="brand-copy">{{UI_BRAND_NAME}}<small>{{UI_BRAND_TAGLINE}}</small></span>
+      </a>
+      {{LANGUAGE_SWITCH}}
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">{{UI_MENU}} <span aria-hidden="true">☰</span></button>
+      <nav class="primary-nav" id="primary-nav" aria-label="{{UI_NAV_LABEL}}">{{NAVIGATION}}<a class="nav-contact" href="#contact">{{UI_CONTACT}} <span aria-hidden="true">↗</span></a></nav>
+    </div>
+  </header>
+  <main id="main">
+    {{PAGE_CONTENT}}
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div class="contact-intro"><p class="eyebrow">{{UI_CONTACT_EYEBROW}}</p><h2 id="contact-title">{{UI_CONTACT_TITLE}}</h2><p>{{UI_CONTACT_INTRO}}</p>{{CONTACT_CTA}}</div>
+        <div class="contact-details">{{CONTACT_DETAILS}}</div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer container"><div><strong>{{NAME}}</strong><span>{{CREDENTIALS}} · {{LOCATION}}</span></div><a href="#main">{{UI_BACK_TOP}} <span aria-hidden="true">↑</span></a></footer>
+  {{DRAFT_FOOTER}}
+</body>
+</html>

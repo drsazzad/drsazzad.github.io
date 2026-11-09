@@ -1,0 +1,16 @@
+{
+  "name": "physician-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Independent professional physician portfolios",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "build:publish": "node scripts/build.mjs --publish",
+    "check": "node scripts/check.mjs"
+  }
+}
