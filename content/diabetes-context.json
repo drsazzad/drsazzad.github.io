@@ -1,0 +1,23 @@
+{
+  "publication": "IDF Diabetes Atlas, 11th edition (2025)",
+  "ageRange": [
+    20,
+    79
+  ],
+  "estimateYear": 2024,
+  "projectionYear": 2050,
+  "regions": [
+    {
+      "id": "bangladesh",
+      "estimatedMillions": 13.9,
+      "projectedMillions": 23.1,
+      "sourceUrl": "https://idf.org/news-and-resources/news/faith-based-diabetes-prevention/"
+    },
+    {
+      "id": "world",
+      "estimatedMillions": 588.7,
+      "projectedMillions": 852.5,
+      "sourceUrl": "https://idf.org/about-diabetes/facts-figures/"
+    }
+  ]
+}

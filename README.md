@@ -92,3 +92,9 @@ Run `node scripts/export-preview.mjs /absolute/path/to/preview-folder` to export
 The local `visiting-cards/` folder contains the English and Bengali PNG/SVG cards, bleed versions, print notes, a ZIP package and the generation source. It is excluded from Git and website deployment.
 
 Professional Activities is available at `activities.html` and `activities.bn.html`. The page uses three selected Dubai 2024 conference photos. Descriptively named originals and the original-to-renamed filename record remain in `private/source-images/`; optimized public copies are in `public/assets/`.
+
+## Homepage diabetes context
+
+The compact homepage section uses shared IDF Diabetes Atlas 2025 figures in `content/diabetes-context.json`. Values are in millions, covering adults aged 20–79; the 2024 estimates and 2050 projections must stay clearly distinguished. The two charts have separate zero-based scales. Bangla displays the same figures in crore. Keep source links, dates and translated labels updated together when revising the data.
+
+The supporting photograph `public/assets/park-walk.webp` is by [dh tang on Pexels](https://www.pexels.com/photo/senior-couple-strolling-in-sunlit-park-pathway-36888292/), used under the [Pexels license](https://www.pexels.com/license/). It is an illustrative image, with no implication that the subjects are patients. The source and care-context links are included in both language versions.

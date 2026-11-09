@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir, cp, rm, access } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { languages, localizedFile, localDigits, loadLocales } from './localization.mjs';
+import { diabetesCharts } from './diabetes-context.mjs';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
 export const escapeHtml = (value = '') => String(value).replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
@@ -17,6 +18,7 @@ async function publicAsset(value, extensions) {
 
 export async function build({ publish = false } = {}) {
   const profile = JSON.parse(await readFile(path.join(root, 'content/profile.json'), 'utf8'));
+  const diabetesData = JSON.parse(await readFile(path.join(root, 'content/diabetes-context.json'), 'utf8'));
   if (typeof profile.draft !== 'boolean') throw new Error('profile.draft must be true or false.');
   if (publish && profile.draft) throw new Error('This profile is a draft. Review the content checklist before setting draft to false and publishing.');
   for (const key of ['name', 'shortName', 'role', 'credentials', 'location']) {
@@ -53,6 +55,8 @@ export async function build({ publish = false } = {}) {
     const description = ui.META_DESCRIPTION;
     const fields = {
       ...Object.fromEntries(Object.entries(ui).map(([key, value]) => [`UI_${key}`, e(value)])),
+      DIABETES_CHARTS: diabetesCharts(diabetesData, language, ui, e),
+      DIABETES_SOURCES: diabetesData.regions.map(region => `<a href="${e(region.sourceUrl)}">${e(ui[`DIABETES_${region.id.toUpperCase()}`])} ↗</a>`).join('<span aria-hidden="true"> · </span>'),
       LANGUAGE: language, ONE: localDigits('01', language), TWO: localDigits('02', language), THREE: localDigits('03', language),
       OVERVIEW_URL: `./${localizedFile('index.html', language)}`,
       EXPERIENCE_URL: `./${localizedFile('experience.html', language)}`,
