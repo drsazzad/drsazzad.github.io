@@ -63,9 +63,9 @@
     {
       "category": "International engagement",
       "title": "Medical conference participation",
-      "location": "Dubai, United Arab Emirates",
-      "description": "Participation in international medical conferences, including a meeting in Dubai.",
-      "note": "Event name, date and participation role to be confirmed."
+      "location": "Dubai, United Arab Emirates · 2024",
+      "description": "Attendance at a medical conference in Dubai in 2024, as part of his engagement with the wider medical community.",
+      "note": "Full event title and exact dates to be confirmed; attendance year and location supplied by the owner."
     },
     {
       "category": "Continuing education",
@@ -119,5 +119,36 @@
     "alt": "Dr. Sazzad Hussan seated at a desk with clinical equipment",
     "width": 1608,
     "height": 2048
+  },
+  "activities": {
+    "year": "2024",
+    "location": "Dubai, United Arab Emirates",
+    "title": "Dubai, 2024.",
+    "summary": "In 2024, Dr. Sazzad Hussan attended a medical conference in Dubai, joining fellow participants for an international professional gathering.",
+    "photos": [
+      {
+        "src": "assets/dubai-2024-conference-portrait.webp",
+        "width": 960,
+        "height": 1280,
+        "alt": "Dr. Sazzad Hussan at the Scientex Conferences backdrop in Dubai in 2024",
+        "caption": "At the conference · Dubai, 2024"
+      },
+      {
+        "src": "assets/dubai-2024-conference-participants.webp",
+        "width": 1280,
+        "height": 960,
+        "alt": "Dr. Sazzad Hussan with fellow participants beside the conference welcome banner in Dubai",
+        "caption": "With fellow conference participants",
+        "description": "A moment together at the conference venue."
+      },
+      {
+        "src": "assets/dubai-2024-conference-session.webp",
+        "width": 1280,
+        "height": 960,
+        "alt": "Dr. Sazzad Hussan seated among attendees during a conference session in Dubai",
+        "caption": "Taking part in the conference",
+        "description": "Seated with fellow attendees during a session."
+      }
+    ]
   }
 }

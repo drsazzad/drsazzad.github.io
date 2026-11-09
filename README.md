@@ -33,13 +33,13 @@ The English biography and shared profile facts are in `content/profile.json`:
 - `draft` controls the preview notice and indexing metadata. Keep it `true` until the visible content has been reviewed. A publication build rejects a draft.
 - `showEditorialNotes` controls pending-detail notes while in draft mode. It is currently `false` for a clean preview; the notes remain stored in the profile and content checklist.
 
-The shared shell is in `src/index.html`, with page layouts in `src/pages/`; styles and mobile navigation are in `public/assets/`. The build generates all three pages in both English and Bangla (six HTML files), so content and navigation work without JavaScript. JavaScript adds the collapsible mobile menu. The build marks the current navigation tab. Links use relative paths for both root and repository-based GitHub Pages addresses.
+The shared shell is in `src/index.html`, with page layouts in `src/pages/`; styles and mobile navigation are in `public/assets/`. The build generates all four pages in both English and Bangla (eight HTML files), so content and navigation work without JavaScript. JavaScript adds the collapsible mobile menu. The build marks the current navigation tab. Links use relative paths for both root and repository-based GitHub Pages addresses.
 
 The original brief `starter_draft.md` is ignored by Git. All original photographs and the business card are organized in `private/source-images/`, also ignored by Git. Keep additional source scans and working notes in `private/`. Only selected visitor-facing files belong in `public/`; its contents are copied into the published website.
 
 ## English and Bangla
 
-English is the default at `index.html`. The header's **English / বাংলা** links open the same page in the selected language, including on mobile. Bangla pages use `index.bn.html`, `experience.bn.html` and `credentials.bn.html`. Navigation keeps the current language; refreshes and shared links preserve it through the URL. No automatic language detection, redirect, translation service or browser storage is required.
+English is the default at `index.html`. The header's **English / বাংলা** links open the same page in the selected language, including on mobile. Bangla pages use `index.bn.html`, `experience.bn.html`, `credentials.bn.html` and `activities.bn.html`. Navigation keeps the current language; refreshes and shared links preserve it through the URL. No automatic language detection, redirect, translation service or browser storage is required.
 
 - `content/locales/en.json` contains English interface text.
 - `content/locales/bn.json` contains edited Bangla interface text and translated profile fields. Keep its record arrays aligned with `profile.json` when adding experience or qualifications.
@@ -68,7 +68,7 @@ GitHub Free supports Pages for public repositories; other plans also support eli
 content/profile.json       English profile and shared facts
 content/locales/            English/Bangla interface text and Bangla profile text
 src/index.html             Shared header, contact section and footer
-src/pages/                 Overview, Experience and Credentials layouts
+src/pages/                 Overview, Experience, Credentials and Activities layouts
 public/assets/             CSS, navigation, favicon, selected photos, future CV
 scripts/build.mjs          Static generator; uses only Node built-ins
 scripts/localization.mjs   Locale loading, text overlays and localized filenames
@@ -79,9 +79,16 @@ scripts/export-preview.mjs Linked portable review pages with embedded assets
 docs/content-checklist.md  Local content notes; excluded from Git
 docs/project-direction.md Local planning notes; excluded from Git
 private/source-images/    Original photographs and card; ignored by Git
+visiting-cards/            Local print-ready English/Bengali cards; ignored by Git
 dist/                     Generated output; ignored by Git
 ```
 
 ## Portable review copy
 
-Run `node scripts/export-preview.mjs /absolute/path/to/preview-folder` to export all six linked HTML pages with embedded assets. Open `index.html` from the exported folder; keep all six files together for navigation. The export includes selected website images only, not private source materials.
+Run `node scripts/export-preview.mjs /absolute/path/to/preview-folder` to export all eight linked HTML pages with embedded assets. Open `index.html` from the exported folder; keep all eight files together for navigation. The export includes selected website images only, not private source materials.
+
+## Visiting cards and conference photographs
+
+The local `visiting-cards/` folder contains the English and Bengali PNG/SVG cards, bleed versions, print notes, a ZIP package and the generation source. It is excluded from Git and website deployment.
+
+Professional Activities is available at `activities.html` and `activities.bn.html`. The page uses three selected Dubai 2024 conference photos. Descriptively named originals and the original-to-renamed filename record remain in `private/source-images/`; optimized public copies are in `public/assets/`.

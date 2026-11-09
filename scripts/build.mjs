@@ -32,12 +32,14 @@ export async function build({ publish = false } = {}) {
   const portrait = await publicAsset(profile.portrait.src, ['.jpg', '.jpeg', '.png', '.webp', '.avif']);
   const clinicalImage = await publicAsset(profile.clinicalImage?.src, ['.jpg', '.jpeg', '.png', '.webp', '.avif']);
   const credentialsImage = await publicAsset(profile.credentialsImage?.src, ['.jpg', '.jpeg', '.png', '.webp', '.avif']);
+  const activityImages = await Promise.all(profile.activities.photos.map(photo => publicAsset(photo.src, ['.jpg', '.jpeg', '.png', '.webp', '.avif'])));
   const cv = await publicAsset(profile.cv.path, ['.pdf']);
   const template = await readFile(path.join(root, 'src/index.html'), 'utf8');
   const definitions = [
     { id: 'overview', file: 'index.html', label: 'Overview' },
     { id: 'experience', file: 'experience.html', label: 'Experience' },
-    { id: 'credentials', file: 'credentials.html', label: 'Credentials' }
+    { id: 'credentials', file: 'credentials.html', label: 'Credentials' },
+    { id: 'activities', file: 'activities.html', label: 'Activities' }
   ];
   const render = (source, values) => source.replace(/\{\{([A-Z_]+)\}\}/g, (_, key) => {
     if (!(key in values)) throw new Error(`Unknown template field: ${key}`);
@@ -51,10 +53,15 @@ export async function build({ publish = false } = {}) {
     const description = ui.META_DESCRIPTION;
     const fields = {
       ...Object.fromEntries(Object.entries(ui).map(([key, value]) => [`UI_${key}`, e(value)])),
-      LANGUAGE: language, ONE: localDigits('01', language), TWO: localDigits('02', language),
+      LANGUAGE: language, ONE: localDigits('01', language), TWO: localDigits('02', language), THREE: localDigits('03', language),
       OVERVIEW_URL: `./${localizedFile('index.html', language)}`,
       EXPERIENCE_URL: `./${localizedFile('experience.html', language)}`,
       CREDENTIALS_URL: `./${localizedFile('credentials.html', language)}`,
+      ACTIVITIES_URL: `./${localizedFile('activities.html', language)}`,
+      ACTIVITY_TITLE: e(profile.activities.title), ACTIVITY_SUMMARY: e(profile.activities.summary),
+      ACTIVITY_YEAR: localDigits(profile.activities.year, language), ACTIVITY_LOCATION: e(profile.activities.location),
+      ACTIVITY_PORTRAIT: `<figure class="activity-portrait"><div class="activity-portrait-frame"><img src="${e(activityImages[0])}" alt="${e(profile.activities.photos[0].alt)}" width="${profile.activities.photos[0].width}" height="${profile.activities.photos[0].height}" fetchpriority="high"></div><figcaption>${e(profile.activities.photos[0].caption)}</figcaption></figure>`,
+      ACTIVITY_GALLERY: profile.activities.photos.slice(1).map((photo, index) => `<figure class="activity-photo"><img src="${e(activityImages[index + 1])}" alt="${e(photo.alt)}" width="${photo.width}" height="${photo.height}" loading="lazy"><figcaption><span class="activity-photo-number" aria-hidden="true">${localDigits(String(index + 1).padStart(2, '0'), language)}</span><div><h3>${e(photo.caption)}</h3><p>${e(photo.description)}</p></div></figcaption></figure>`).join('\n'),
       PAGE_TITLE: e(title), DESCRIPTION: e(description), ROBOTS: profile.draft ? 'noindex, nofollow' : 'index, follow',
       NAME: e(profile.name), SHORT_NAME: e(profile.shortName), INITIALS: e(profile.initials), CREDENTIALS: e(profile.credentials), ROLE: e(profile.role), LOCATION: e(profile.location), INTRO: e(profile.intro),
       FOCUS_SUMMARY: e(profile.focusSummary), CURRENT_APPOINTMENT: e(profile.experience[0]?.title || ''),
@@ -91,6 +98,7 @@ export async function build({ publish = false } = {}) {
       const values = {
         ...fields,
         PAGE_ID: page.id,
+        DESCRIPTION: e(page.id === 'activities' ? ui.ACT_META_DESCRIPTION : description),
         PAGE_TITLE: e(`${profile.name} | ${page.id === 'overview' ? ui.OVERVIEW_TITLE : ui[page.id.toUpperCase()]}`),
         CANONICAL: `<meta property="og:locale" content="${language === 'bn' ? 'bn_BD' : 'en_US'}">` + (pageUrl ? `<link rel="canonical" href="${e(pageUrl)}"><meta property="og:url" content="${e(pageUrl)}">${[...languages, 'x-default'].map(lang => `<link rel="alternate" hreflang="${lang}" href="${e(new URL(localizedFile(page.file, lang === 'x-default' ? 'en' : lang), profile.siteUrl).href)}">`).join('')}` : ''),
         NAVIGATION: definitions.map(item => `<a href="./${localizedFile(item.file, language)}"${item.id === page.id ? ' aria-current="page"' : ''}>${e(ui[item.id.toUpperCase()])}</a>`).join(''),

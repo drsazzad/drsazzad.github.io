@@ -5,7 +5,7 @@ import { build } from './build.mjs';
 import { languages } from './localization.mjs';
 
 const { pages, profile, output } = await build();
-assert.equal(pages.length, 3 * languages.length, 'Every page needs English and Bangla versions.');
+assert.equal(pages.length, 4 * languages.length, 'Every page needs English and Bangla versions.');
 assert.equal(pages.find(page => page.file === 'index.html')?.language, 'en', 'English must remain the default entry page.');
 const pagesByFile = new Map(pages.map(page => [page.file, page]));
 const idsByPage = new Map(pages.map(page => [page.file, [...page.html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1])]));
@@ -33,6 +33,11 @@ for (const { id, file, language, html } of pages) {
   assert(!html.includes('href="#"'), `${file}: dead placeholder link.`);
   assert(!/(?:src|href)="\/(?!\/)/.test(html), `${file}: URLs must work under a repository subpath.`);
   assert(html.includes(`mailto:${profile.contact.email}`), `${file}: missing contact email.`);
+  if (id === 'activities') {
+    assert.equal((html.match(/<img\b/g) || []).length, 3, `${file}: show only the three selected conference photographs.`);
+    assert(html.includes(language === 'bn' ? '২০২৪' : '2024'), `${file}: confirmed attendance year is missing.`);
+    for (const photo of profile.activities.photos) assert(html.includes(`src="./${photo.src}"`), `${file}: selected photograph is missing.`);
+  }
   const current = [...html.matchAll(/<a href="([^"]+)" aria-current="page"/g)];
   assert.equal(current.length, 1, `${file}: exactly one current navigation item.`);
   assert.equal(current[0][1], `./${file}`, `${file}: incorrect current page.`);
